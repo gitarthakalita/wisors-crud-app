@@ -14,7 +14,7 @@ class App extends Component {
 
       <Provider store={appStore}>
         <BrowserRouter basename='/dashboard'>
-          <div className>
+          <div className ="container">
             <Sidebar />
 
             <Routes />

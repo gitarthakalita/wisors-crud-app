@@ -1,0 +1,200 @@
+.registration-form-container{
+    margin: auto;
+
+
+    background: #fff;
+
+    padding: 2rem 5rem ;
+
+    box-shadow: 0 0.25rem 0.25rem rgba(156, 156, 156, 0.507);
+
+    border-radius: 0.25rem;
+
+
+    width: 25rem;
+
+    .form-heading{
+        text-transform: uppercase;
+        text-align: center;
+
+        margin-bottom: 3rem ;
+
+        h1{
+            font-weight: 400;
+        }
+    }
+
+
+
+    .form-container{
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: space-between;
+
+        
+
+        .form-group{
+            margin: 0.6rem 0;
+
+            display: grid;
+            grid-template-columns: 1fr ;
+
+            align-items: center;
+
+
+            .select-item{
+                margin: 0.7rem 0;
+
+             
+            }
+
+
+        }
+
+
+        .form-submit{
+            margin: 2rem;
+            text-align: center;
+            button{
+
+                width: 60%;
+
+                height: 2.4rem;
+            }
+        }
+
+
+    }
+
+
+
+    .group-form-container{
+        margin: 0.6rem 0;
+
+        display: grid;
+        grid-template-columns: 1fr ;
+
+        align-items: center;
+
+
+        .heading{
+            font-size: 1.2em;
+
+            border-bottom: 2px solid rgb(70, 130, 209);
+
+            padding: 0.5rem 0;
+        }
+
+        .item{
+            margin-left: 1rem;
+        }
+    }
+
+
+    
+}
+
+label{
+    background: #fff;
+
+    
+}
+
+// button{
+//     border: none;
+
+//     // background-color: rgb(55, 79, 156);
+//     background-color: rgb(100, 219, 140);
+
+//     box-shadow: 0 0.1rem 0.25rem rgb(215, 226, 222);
+
+//     outline: none;
+
+//     cursor: pointer;
+
+//     color: white;
+//     font-size: large;
+
+    
+
+//     border-radius: 0.25rem;
+// }
+
+
+// button:hover{
+//     transform: scale(1.05);
+
+    
+// }
+
+// button:active{
+//     // background-color: rgb(103, 238, 148);
+
+//     background-color: rgb(55, 79, 156);
+// }
+
+
+
+
+
+input{
+
+    // border: 2px solid rgb(103, 116, 238);
+
+    border: 2px solid rgb(199, 202, 226);
+
+    border-radius: 4px;
+
+    background-color: #fff;
+
+    height: 1.6rem;
+
+  
+padding: 5px;
+
+    font-size: 16px ;
+
+    
+
+}
+
+
+input:focus{
+    border-color: rgb(103, 238, 148);
+
+    border-width: 2px;
+    
+}
+
+.form-group{
+    height: 5rem;
+}
+
+
+select{
+    border: 2px solid rgb(199, 202, 226);
+
+    border-radius: 4px;
+
+    background-color: #fff;
+
+    padding: 5px;
+
+
+    font-size: 16px ;
+
+    height: 2.6rem;
+
+ 
+
+    
+
+}
+
+
+.hidden{
+    display: none;
+}

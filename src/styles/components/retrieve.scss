@@ -1,0 +1,33 @@
+.retrieve-container{
+    margin: 5rem ;
+
+    
+
+    display: grid;
+
+    grid-template-columns: 20rem 20rem;
+
+    gap: 15rem;
+    
+
+    .retrieve-item{
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: start;
+
+
+        
+
+        margin: 5rem 0;
+
+        padding: 1rem;
+
+        
+    }
+
+    .rtrv{
+        margin: 1rem 0;
+    }
+}

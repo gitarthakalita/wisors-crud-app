@@ -1,9 +1,9 @@
 import React from 'react';
-import './registration-form.scss';
-import 'react-select/dist/react-select.cjs';
+
+
 import axios from 'axios';
 import { inject, observer } from "mobx-react";
-
+import {Button} from '@material-ui/core';
 @inject("store")
 @observer
 class RegistrationForm extends React.Component {
@@ -32,13 +32,13 @@ class RegistrationForm extends React.Component {
                 }
         }
 
-        handleChangeForServiceName = (servicename) => {
-                this.setState({ servicename });
-        }
+        // handleChangeForServiceName = (servicename) => {
+        //         this.setState({ servicename });
+        // }
 
-        handleChangeForServiceDescription = (servicename) => {
-                this.setState({ servicedescription: servicename });
-        }
+        // handleChangeForServiceDescription = (servicename) => {
+        //         this.setState({ servicedescription: servicename });
+        // }
 
         changeHandler = (e) => {
                 this.setState({ [e.target.name]: e.target.value })
@@ -48,13 +48,16 @@ class RegistrationForm extends React.Component {
                 const { store } = this.props;
 
                 e.preventDefault();
-                
-                axios.post('http://localhost:8080/user/kafka/publishMsg', this.state)
+
+                // user/registration/create
+                // http://localhost:8080/user/kafka/publishMsg
+
+                axios.post('http://localhost:8080/user/registration/create', this.state)
                         .then(response => {   
                                 console.log(response);
                                                               
                         if(response.status === 200){
-                                store.notification = {type: 'success', message: response.data.status};
+                                store.notification = {type: 'success', message: response.data.status, phone: response.data.phone};
                                 this.props.history.push(`/thank-you`);      
                         } if(response.status === null) {
                                 this.props.history.push(`/404`);      
@@ -75,7 +78,7 @@ class RegistrationForm extends React.Component {
                         <div className="registration-form-container">
 
                                 <div className="form-heading">
-                                        <h1>Wisors Registration Form</h1>
+                                        <h1>Registration Form</h1>
                                 </div>
 
                                 <form className="form-container" onSubmit={this.submitHandler.bind(this)} >
@@ -211,7 +214,7 @@ class RegistrationForm extends React.Component {
                                         </div>
 
                                         <div className="form-submit">
-                                                <button type="submit" name="submit"  >Sign Up</button>
+                                                <Button variant="contained" color="primary" type="submit" name="submit"  >Sign Up</Button>
                                         </div>
 
 
