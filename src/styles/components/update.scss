@@ -1,0 +1,47 @@
+.update-container{
+    margin: 5rem ;
+
+    width: 20rem;
+
+    
+    .update-item{
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: start;
+
+        
+
+
+        
+
+        margin-top: 2rem;
+
+        padding: 1rem;
+
+        
+    }
+
+}
+
+
+.updated-container{
+    margin: 0  5rem ;
+
+    
+
+    display: flex;
+
+    flex-direction: column;
+
+    
+
+
+    width: 20rem;
+
+   
+    .update-data-item{
+        margin: 0.75rem 0;
+    }
+}

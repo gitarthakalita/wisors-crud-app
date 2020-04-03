@@ -16,8 +16,12 @@ export class Sidebar extends Component {
                     <Link to="/retrieve">
                     <Button variant="outlined" color="primary" className="menu-item">Retrive</Button>
                     </Link>
-                    <Button variant="outlined" color="primary" className="menu-item">Update</Button>
-                    <Button variant="outlined" color="primary" className="menu-item">Delete</Button>
+                  <Link to="/update">
+                  <Button variant="outlined" color="primary" className="menu-item">Update</Button>
+                  </Link>
+                   <Link to="/delete">
+                   <Button variant="outlined" color="primary" className="menu-item">Delete</Button>
+                   </Link>
                    
                 </div>
             </div>

@@ -6,7 +6,7 @@ import { inject, observer } from "mobx-react";
 import {Button} from '@material-ui/core';
 @inject("store")
 @observer
-class RegistrationForm extends React.Component {
+class UpdateForm extends React.Component {
 
         constructor(props) {
                 super(props);
@@ -53,16 +53,15 @@ class RegistrationForm extends React.Component {
                 // http://localhost:8080/user/kafka/publishMsg
 
                 axios.post('http://localhost:8080/user/registration/create', this.state)
-                        .then(response => {
+                        .then(response => {   
                                 console.log(response);
-
+                                                              
                         if(response.status === 200){
                                 store.notification = {type: 'success', message: response.data.status, phone: response.data.phone};
-                                store.mobile.push(response.data.phone);
-                                this.props.history.push(`/thank-you`);
+                                this.props.history.push(`/thank-you`);      
                         } if(response.status === null) {
-                                this.props.history.push(`/404`);
-                                console.log('Api error or bad request');
+                                this.props.history.push(`/404`);      
+                                console.log('Api error or bad request');      
                         }
                         })
                         .catch(error => {
@@ -227,4 +226,4 @@ class RegistrationForm extends React.Component {
 }
 
 
-export default RegistrationForm;
+export default UpdateForm;

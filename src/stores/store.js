@@ -7,6 +7,16 @@ class Store {
         type: '',
         message: ''
     };
+    @observable mobile = [1];
+    @observable user = {
+        phone: 923293923,
+        firstname: 'debajit',
+        lastname: 'deka',
+        state: 'assam',
+        country: 'india',
+        email:'xxx@gmail.com',
+        streetnumber: '11222'
+      };
 
     @action clearList() {
         this.notification = {
