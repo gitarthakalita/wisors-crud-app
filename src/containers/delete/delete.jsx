@@ -21,6 +21,12 @@ import InputLabel from '@material-ui/core/InputLabel';
 
 
   }
+
+  handleChange = (event) => {
+    this.setState({mobile:event.target.value})
+   
+ };
+
   changeHandler = (e) => {
       this.setState({ [e.target.name]: e.target.value })
   }
@@ -34,10 +40,13 @@ import InputLabel from '@material-ui/core/InputLabel';
 
       // const primaryPhone = store.notification.phone;
 
-      axios.delete(`http://localhost:8080/user/registration/delete/phone?${mobile}`, this.state)
+      axios.delete(`http://localhost:8080/user/registration/delete/phone?primaryPhone=${mobile}`, this.state)
           .then(response => {
               console.log(response);
-              if (response.status === 200) {
+              let resdata = response.data.status.split(' ');
+
+              
+              if (response.status === 200 ) {
                   store.notification = {
                       type: 'success',
                       message: response.data.status,
@@ -52,7 +61,14 @@ import InputLabel from '@material-ui/core/InputLabel';
               } if (response.status === null) {
                   this.props.history.push(`/404`);
                   console.log('Api error or bad request');
-              }
+
+              } if (response.status === 200 &&  resdata[1] === "NotSuccessfull") {
+                store.notification = {
+                    type: 'invalid',
+                    message: response.data.phone + ' is not a valid Phone No , ' +   response.data.status
+                };
+                this.props.history.push('/retrieved-failed');
+            }
           })
           .catch(error => {
               console.log(error);
@@ -66,12 +82,12 @@ import InputLabel from '@material-ui/core/InputLabel';
         return (
           <div className="retrieve-container">
               <form className="retrieve-item" onSubmit={this.submitHandler.bind(this)}>
-                  <InputLabel id="demo-simple-select-label">select Phone of the user to delete</InputLabel>
+                  <InputLabel id="demo-simple-select-label">Select Phone of the user to delete</InputLabel>
                     <Select
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       value={this.state.mobile}
-                      onChange={this.handleChange}
+                      onChange={this.handleChange.bind(this)}
                     >
                     {store.mobile.map(no => <MenuItem value={no}>{no}</MenuItem>)}
 

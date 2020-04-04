@@ -25,9 +25,15 @@ class Update extends Component {
   }
 
 
+//   handleChange = (event) => {
+//     console.log(event.target.value);
+//   };
+
   handleChange = (event) => {
-    console.log(event.target.value);
-  };
+    this.setState({mobile:event.target.value})
+   
+ };
+
 
 
 
@@ -42,11 +48,8 @@ class Update extends Component {
         e.preventDefault();
 
 
-        const primaryPhone = store.notification.phone
 
-        // primaryPhone=${this.state.mobile}
-
-        axios.get(`http://localhost:8080/user/phone?${mobile} `, this.state)
+        axios.get(`http://localhost:8080/user/phone?primaryPhone=${mobile} `, this.state)
             .then(response => {
                 console.log(response);
                 if (response.status === 200 ) {
@@ -57,9 +60,16 @@ class Update extends Component {
                     };
                     this.props.store.user = response.data;
                     this.props.history.push(`/updated-data`);
+                    
                 } if (response.status === null) {
                     this.props.history.push(`/404`);
                     console.log('Api error or bad request');
+                } if (response.status === 200 && response.data.phone === "") {
+                    store.notification = {
+                        type: 'invalid',
+                        message: `${mobile} ${response.data.status} , No data available`
+                    };
+                    this.props.history.push('/retrieved-failed');
                 }
             })
             .catch(error => {
@@ -71,8 +81,7 @@ class Update extends Component {
         const { store } = this.props;
         return (
             <div className="update-container">
-                <div> User with Primary Key
-                </div>
+               
 
                 <form className="update-item" onSubmit={this.submitHandler.bind(this)}>
                 <InputLabel id="demo-simple-select-label">Phone</InputLabel>
@@ -80,13 +89,13 @@ class Update extends Component {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={this.state.mobile}
-                    onChange={this.handleChange}
+                    onChange={this.handleChange.bind(this)}
                   >
                   {store.mobile.map(no => <MenuItem value={no}>{no}</MenuItem>)}
 
 
                   </Select>
-                    <Button className="update-btn" variant="contained" color="primary" type="submit" name="submit">Update</Button>
+                    <Button className="update-btn" variant="contained" color="primary" type="submit" name="submit">Update Fields</Button>
                 </form>
             </div>
         )

@@ -15,7 +15,7 @@ export class Homepage extends Component {
                 
                 <h1>Welcome to Wisors</h1>
 
-                <p>This is a dashboard application showcasing minimal CRUD operations of Wisors backend API</p>
+                
 
 
                

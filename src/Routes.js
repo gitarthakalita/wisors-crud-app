@@ -11,6 +11,7 @@ import UpdateData from './containers/update/updated-data';
 import Delete from './containers/delete/delete';
 import DeleteSuccess from './containers/delete/delete-success';
 import UpdateSuccess from './containers/update/update-success';
+import RetrieveFailed from './containers/retrieve/retrieve-failed';
 
 export default function Routes() {
     return (
@@ -19,8 +20,11 @@ export default function Routes() {
             <Route path="/homepage" component={Homepage} />
             <Route path="/registration" component={RegistrationForm} />
             <Route  path='/thank-you'  component={FormSuccess} />
+            
             <Route  path='/retrieve'  component={Retrieve} />
             <Route  path='/retrieved-data'  component={RetrievedData} />
+            <Route  path='/retrieved-failed'  component={RetrieveFailed} />
+
             <Route  path='/update'  component={Update} />
             <Route  path='/updated-data'  component={UpdateData} />
             <Route  path='/update-success'  component={UpdateSuccess} />

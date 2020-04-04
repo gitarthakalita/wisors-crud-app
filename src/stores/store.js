@@ -7,7 +7,7 @@ class Store {
         type: '',
         message: ''
     };
-    @observable mobile = [1];
+    @observable mobile = ['1'];
     @observable user = {
         phone: 923293923,
         firstname: 'debajit',

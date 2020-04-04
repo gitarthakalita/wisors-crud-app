@@ -24,8 +24,12 @@ class Retrieve extends Component {
     }
 
 
-   handleChange = (event) => {
-      console.log(event.target.value);
+    handleChange = (event) => {
+        this.setState({ mobile: event.target.value })
+
+
+
+
     };
 
 
@@ -42,20 +46,28 @@ class Retrieve extends Component {
 
         // const primaryPhone = store.notification.phone;
 
-        axios.get(`http://localhost:8080/user/phone?${mobile}`, this.state)
+        axios.get(`http://localhost:8080/user/phone?primaryPhone=${mobile}`, this.state)
             .then(response => {
                 console.log(response);
-                if (response.status === 200) {
+                if (response.status === 200 && response.data.phone !== null) {
                     store.notification = {
                         type: 'success',
                         message: response.data.status
-                      };
-                    store.user =  response.data;
-                    
+                    };
+                    store.user = response.data;
+
                     this.props.history.push(`/retrieved-data`);
+
                 } if (response.status === null) {
                     this.props.history.push(`/404`);
                     console.log('Api error or bad request');
+
+                } if (response.status === 200 && response.data.phone === "") {
+                    store.notification = {
+                        type: 'invalid',
+                        message: `${mobile} is not a valid Phone No   to search`
+                    };
+                    this.props.history.push('/retrieved-failed');
                 }
             })
             .catch(error => {
@@ -70,24 +82,20 @@ class Retrieve extends Component {
             <div className="retrieve-container">
                 <form className="retrieve-item" onSubmit={this.submitHandler.bind(this)}>
                     <InputLabel id="demo-simple-select-label">Phone</InputLabel>
-                      <Select
+                    <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={this.state.mobile}
-                        onChange={this.handleChange}
-                      >
-                      {store.mobile.map(no => <MenuItem value={no}>{no}</MenuItem>)}
+                        onChange={this.handleChange.bind(this)}
+                    >
+                        {store.mobile.map(no => <MenuItem value={no}>{no}</MenuItem>)}
 
 
-                      </Select>
-                  <Button className="rtrv" variant="contained" color="primary" type="submit" name="submit">Retrieve</Button>
+                    </Select>
+                    <Button className="rtrv" variant="contained" color="primary" type="submit" name="submit">Retrieve</Button>
                 </form>
 
 
-                <form className="retrieve-item" onSubmit={this.submitHandler.bind(this)}>
-                    <p>User with Primary key : {store.notification.phone}</p>
-                    <Button className="rtrv" variant="contained" color="secondary" type="submit" name="submit">Retrieve By Primary key</Button>
-                </form>
 
                 <div className="retrieve-item" onSubmit={this.submitHandler.bind(this)}>
 
