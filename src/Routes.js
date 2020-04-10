@@ -12,6 +12,7 @@ import Delete from './containers/delete/delete';
 import DeleteSuccess from './containers/delete/delete-success';
 import UpdateSuccess from './containers/update/update-success';
 import RetrieveFailed from './containers/retrieve/retrieve-failed';
+import UpdateForm from './containers/update/update-form';
 
 export default function Routes() {
     return (
@@ -27,6 +28,7 @@ export default function Routes() {
 
             <Route  path='/update'  component={Update} />
             <Route  path='/updated-data'  component={UpdateData} />
+            <Route  path='/update-form'  component={UpdateForm} />
             <Route  path='/update-success'  component={UpdateSuccess} />
 
             <Route  path='/delete'  component={Delete} />

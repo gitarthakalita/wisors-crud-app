@@ -1,9 +1,11 @@
 import React from 'react';
-
-
 import axios from 'axios';
 import { inject, observer } from "mobx-react";
 import { Button } from '@material-ui/core';
+import { USER_URL } from '../../config/api/base.js';
+
+
+
 @inject("store")
 @observer
 class RegistrationForm extends React.Component {
@@ -32,7 +34,7 @@ class RegistrationForm extends React.Component {
                 }
         }
 
-     
+
         changeHandler = (e) => {
                 this.setState({ [e.target.name]: e.target.value })
         }
@@ -45,7 +47,7 @@ class RegistrationForm extends React.Component {
                 // user/registration/create
                 // http://localhost:8080/user/kafka/publishMsg
 
-                axios.post('http://localhost:8080/user/registration/create', this.state)
+                axios.post(`${USER_URL.create}`, this.state)
                         .then(response => {
                                 console.log(response);
 
@@ -158,7 +160,7 @@ class RegistrationForm extends React.Component {
                                         {/* </div> */}
 
                                         {/* <div className="group-form-container"> */}
-                                                
+
 
                                                 <div className="group-form item">
                                                         <div className="form-group">
@@ -190,7 +192,7 @@ class RegistrationForm extends React.Component {
                                                                         <option value="male">Male</option>
                                                                         <option value="female">Female</option>
                                                                         <option value="other">Other</option>
-                                                                       
+
                                                                 </select>
                                                         </div>
 
@@ -225,7 +227,7 @@ class RegistrationForm extends React.Component {
 
                                         </div>
 
-                                        
+
                                         <div className="form-submit">
                                                 <Button variant="contained" color="primary" type="submit" name="submit"  >Sign Up</Button>
                                         </div>

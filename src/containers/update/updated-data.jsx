@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { inject, observer } from "mobx-react";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import {USER_URL } from '../../config/api/base.js';
 
 import axios from 'axios';
 @inject("store")
@@ -14,7 +15,7 @@ class UpdatedData extends Component {
 
     this.state = {
         mobile: '',
-        
+
     }
 
 
@@ -26,7 +27,7 @@ class UpdatedData extends Component {
 // };
 handleChange = (event) => {
     this.setState({mobile:event.target.value})
-   
+
  };
 
 
@@ -43,11 +44,11 @@ handleChange = (event) => {
       e.preventDefault();
 
 
-      
+
 
       // primaryPhone=${this.state.mobile}
 
-      axios.put(`http://localhost:8080/user/registration/update/phone?primaryPhone=${mobile} `, this.state)
+      axios.put(`${USER_URL.update}?primaryPhone=${mobile} `, this.state)
           .then(response => {
               console.log(response);
               console.log(response.data.status);
@@ -56,7 +57,7 @@ handleChange = (event) => {
               if (response.status === 200 && resdata[1] === "Successfull") {
                   store.notification = {
                       type: 'success',
-                      message: response.data.status,
+                      message: `Phone no   ${mobile}  ${response.data.status}  `,
                       // phone: response.data.phone,
                   };
                   this.props.store.user = response.data;
@@ -85,7 +86,7 @@ handleChange = (event) => {
         return (
             <form className="updated-container" onSubmit={this.submitHandler.bind(this)}>
                 <p>Phone number : {store.notification.phone}</p>
-                <TextField className="update-data-item" label="Phone Number" defaultValue={store.user.phone} onChange={this.handleChange.bind(this)} />       
+                <TextField className="update-data-item" label="Phone Number" defaultValue={store.user.phone} onChange={this.handleChange.bind(this)} />
                 <TextField className="update-data-item" label="User Type" defaultValue={store.user.usertype} />
                 <TextField className="update-data-item" label="First name" defaultValue={store.user.firstname} />
                 <TextField className="update-data-item" label="Last name" defaultValue={store.user.lastname} />

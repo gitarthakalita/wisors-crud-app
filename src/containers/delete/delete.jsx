@@ -8,6 +8,10 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
+import { USER_URL } from '../../config/api/base.js';
+
+
+
 @inject("store")
 @observer
  class Delete extends Component {
@@ -24,7 +28,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 
   handleChange = (event) => {
     this.setState({mobile:event.target.value})
-   
+
  };
 
   changeHandler = (e) => {
@@ -40,13 +44,14 @@ import InputLabel from '@material-ui/core/InputLabel';
 
       // const primaryPhone = store.notification.phone;
 
-      axios.delete(`http://localhost:8080/user/registration/delete/phone?primaryPhone=${mobile}`, this.state)
+      axios.delete(`${USER_URL.delete}?primaryPhone=${mobile}`, this.state)
           .then(response => {
               console.log(response);
               let resdata = response.data.status.split(' ');
+              let resMob = response.data.phone.split('/\d+/g');
+              resMob = parseInt(resMob);
 
-              
-              if (response.status === 200 ) {
+              if (response.status === 200 && resdata[1] !== "NotSuccessfull"){
                   store.notification = {
                       type: 'success',
                       message: response.data.status,
@@ -65,7 +70,7 @@ import InputLabel from '@material-ui/core/InputLabel';
               } if (response.status === 200 &&  resdata[1] === "NotSuccessfull") {
                 store.notification = {
                     type: 'invalid',
-                    message: response.data.phone + ' is not a valid Phone No , ' +   response.data.status
+                    message: mobile + ' is not a valid Phone No , ' +   response.data.status
                 };
                 this.props.history.push('/retrieved-failed');
             }
@@ -89,7 +94,7 @@ import InputLabel from '@material-ui/core/InputLabel';
                       value={this.state.mobile}
                       onChange={this.handleChange.bind(this)}
                     >
-                    {store.mobile.map(no => <MenuItem value={no}>{no}</MenuItem>)}
+                    {store.mobile.map(no => <MenuItem key={no} value={no}>{no}</MenuItem>)}
 
 
                     </Select>

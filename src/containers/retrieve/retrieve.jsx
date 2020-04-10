@@ -8,6 +8,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
+import { USER_URL } from '../../config/api/base.js';
+
 
 @inject("store")
 @observer
@@ -46,7 +48,7 @@ class Retrieve extends Component {
 
         // const primaryPhone = store.notification.phone;
 
-        axios.get(`http://localhost:8080/user/phone?primaryPhone=${mobile}`, this.state)
+        axios.get(`${USER_URL.search}?primaryPhone=${mobile}`, this.state)
             .then(response => {
                 console.log(response);
                 if (response.status === 200 && response.data.phone !== null) {
@@ -65,7 +67,7 @@ class Retrieve extends Component {
                 } if (response.status === 200 && response.data.phone === "") {
                     store.notification = {
                         type: 'invalid',
-                        message: `${mobile} is not a valid Phone No   to search`
+                        message: `${mobile} is not a valid phone no  for searching`
                     };
                     this.props.history.push('/retrieved-failed');
                 }
@@ -88,7 +90,7 @@ class Retrieve extends Component {
                         value={this.state.mobile}
                         onChange={this.handleChange.bind(this)}
                     >
-                        {store.mobile.map(no => <MenuItem value={no}>{no}</MenuItem>)}
+                        {store.mobile.map(no => <MenuItem  key={no}  value={no}>{no}</MenuItem>)}
 
 
                     </Select>

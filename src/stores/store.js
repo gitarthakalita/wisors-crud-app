@@ -9,13 +9,13 @@ class Store {
     };
     @observable mobile = ['1'];
     @observable user = {
-        phone: 923293923,
-        firstname: 'debajit',
-        lastname: 'deka',
-        state: 'assam',
-        country: 'india',
-        email:'xxx@gmail.com',
-        streetnumber: '11222'
+        phone: null,
+        firstname: '',
+        lastname: '',
+        state: '',
+        country: '',
+        email:'',
+        
       };
 
     @action clearList() {
