@@ -13,24 +13,67 @@ class RegistrationForm extends React.Component {
         constructor(props) {
                 super(props);
 
+                // this.state = {
+
+                //         usertype: "",
+                //         firstname: '',
+                //         lastname: '',
+                //         email: '',
+                //         phone: '',
+                //         addressline1: '',
+                //         addressline2: '',
+                //         city: '',
+                //         state: '',
+                //         pin: '',
+                //         country: '',
+                //         subscriptionlevel: "",
+                //         gender: "",
+                //         dob: '',
+                //         groupid: '',
+                //         addresstype: ''
+                // }
+
                 this.state = {
 
-                        usertype: "",
-                        firstname: '',
-                        lastname: '',
-                        email: '',
-                        phone: '',
-                        addressline1: '',
-                        addressline2: '',
-                        city: '',
-                        state: '',
-                        pin: '',
-                        country: '',
-                        subscriptionlevel: "",
-                        gender: "",
-                        dob: '',
-                        groupid: '',
-                        addresstype: ''
+                        wsrUserAccount: {
+
+                                usertype: "",
+                                firstname: '',
+                                lastname: '',
+                                phone: '',
+                                email: '',
+                                password: '',
+                                activeflag: '',
+                                dob: '',
+                                gender: ''
+
+                        },
+                        wsrUserAddressList: [
+                                {
+                                        addresstype: '',
+                                        addressline1: '',
+                                        addressline2: '',
+                                        phone:'',
+                                        state:'',
+                                        country:'',
+                                        postalcode:'',
+                                        email:'',
+                                        activeflag:''
+                                }
+                        ],
+
+                        wsrUserGroupTypeList:[
+                                {
+                                        group_name:'',
+                                        wsrUserGroupXref:{
+                                                wsrUserInGroup:{
+                                                        group_admin:''
+                                                }
+                                        }
+                                }
+                        ]
+                        
+           
                 }
         }
 
@@ -47,7 +90,7 @@ class RegistrationForm extends React.Component {
                 // user/registration/create
                 // http://localhost:8080/user/kafka/publishMsg
 
-                axios.post(`${USER_URL.create}`, this.state)
+                axios.post(`${USER_URL.create}`, JSON.stringify(this.state))
                         .then(response => {
                                 console.log(response);
 
@@ -62,10 +105,13 @@ class RegistrationForm extends React.Component {
                         })
                         .catch(error => {
                                 console.log(error);
+                                console.log(JSON.stringify(this.state));
+                                // alert(JSON.stringify(this.state)+ "\n");
                         })
         }
 
         render() {
+                
                 // const { store } = this.props;
 
                 const { usertype, firstname, lastname, email, phone, addressline1, addressline2, city, state, pin, country, subscriptionlevel, dob, gender, groupid, addresstype } = this.state;
@@ -157,9 +203,9 @@ class RegistrationForm extends React.Component {
 
 
                                                 </div>
-                                        {/* </div> */}
+                                                {/* </div> */}
 
-                                        {/* <div className="group-form-container"> */}
+                                                {/* <div className="group-form-container"> */}
 
 
                                                 <div className="group-form item">

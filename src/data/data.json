@@ -1,0 +1,152 @@
+[
+    {
+        "wsrUserAccount": {
+            "usertype": "admin",
+            "firstname": "Manjit",
+            "lastname": "Barman",
+            "phone": "8888",
+            "email": "mbarman@gmail.com",
+            "password": "Weekly",
+            "activeflag": true,
+            "dob": "2000-12-12",
+            "gender": "Male"
+        },
+        "wsrUserAddressList": [
+            {
+                "addresstype": "Home",
+                "addressline1": "NYC1",
+                "addressline2": "NYC2",
+                "phone": "8888",
+                "city": "NYC",
+                "state": "NYC",
+                "country": "USA",
+                "postalcode": "22222",
+                "email": "m2@gmail.com",
+                "activeflag": true
+            },
+            {
+                "addresstype": "Office",
+                "addressline1": "Cal1",
+                "addressline2": "Cal2",
+                "phone": "8888",
+                "city": "CALIFORNIA",
+                "state": "CAL",
+                "country": "USA",
+                "postalcode": "333333",
+                "email": "m3@gmail.com",
+                "activeflag": true
+            }
+        ],
+        "wsrUserGroupTypeList": [
+            {
+                "group_name": "M_B_Research",
+                "wsrUserGroupXref": {
+                    "wsrUserInGroup": {
+                        "group_admin": false
+                    }
+                }
+            },
+            {
+                "group_name": "M_B_STEM",
+                "wsrUserGroupXref": {
+                    "wsrUserInGroup": {
+                        "group_admin": true
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "userid": 13,
+        "usertype": "admin",
+        "firstname": "Manjit",
+        "lastname": "Barman",
+        "phone": "8888",
+        "email": "mbarman@gmail.com",
+        "password": "Weekly",
+        "activeflag": true,
+        "createdate": "2020-04-23 15:54:30",
+        "updatedate": "2020-04-23 15:55:06",
+        "inactivedate": "2021-04-22 16:55:31",
+        "dob": "2000-12-12",
+        "gender": "Male",
+        "wsrUserAddress": [
+            {
+                "user_address_id": 25,
+                "addresstype": "Home",
+                "addressline1": "NYC1",
+                "addressline2": "NYC2",
+                "phone": "8888",
+                "city": "NYC",
+                "state": "NYC",
+                "country": "USA",
+                "postalcode": "22222",
+                "email": "m2@gmail.com",
+                "createdate": "2020-04-23 15:54:30",
+                "updatedate": "2020-04-23 15:55:06",
+                "inactivedate": "2021-04-22 16:55:31",
+                "activeflag": true
+            },
+            {
+                "user_address_id": 26,
+                "addresstype": "Office",
+                "addressline1": "Cal1",
+                "addressline2": "Cal2",
+                "phone": "8888",
+                "city": "CALIFORNIA",
+                "state": "CAL",
+                "country": "USA",
+                "postalcode": "333333",
+                "email": "m3@gmail.com",
+                "createdate": "2020-04-23 15:54:30",
+                "updatedate": "2020-04-23 15:55:06",
+                "inactivedate": "2021-04-22 16:55:31",
+                "activeflag": true
+            }
+        ],
+        "wsrUserInGroup": [
+            {
+                "user_in_group_id": 25,
+                "delete_time": "",
+                "insert_time": "2020-04-23 15:54:30",
+                "group_admin": true
+            },
+            {
+                "user_in_group_id": 26,
+                "delete_time": "",
+                "insert_time": "2020-04-23 15:54:30",
+                "group_admin": false
+            }
+        ],
+        "wsrUserGroupType": [
+            {
+                "user_group_type_id": 25,
+                "group_name": "M_B_Research",
+                "wsrUserGroupXref": {
+                    "user_group_id": 25,
+                    "insert_time": "2020-04-23 15:54:30",
+                    "wsrUserInGroup": {
+                        "user_in_group_id": 25,
+                        "delete_time": "",
+                        "insert_time": "2020-04-23 15:54:30",
+                        "group_admin": true
+                    }
+                }
+            },
+            {
+                "user_group_type_id": 26,
+                "group_name": "M_B_STEM",
+                "wsrUserGroupXref": {
+                    "user_group_id": 26,
+                    "insert_time": "2020-04-23 15:54:30",
+                    "wsrUserInGroup": {
+                        "user_in_group_id": 26,
+                        "delete_time": "",
+                        "insert_time": "2020-04-23 15:54:30",
+                        "group_admin": false
+                    }
+                }
+            }
+        ]
+    }
+]
