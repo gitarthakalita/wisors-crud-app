@@ -7,7 +7,50 @@ a{
 }
 
 .container{
-    margin-top: 5rem;
+    // margin-top: 5rem;
     margin-left: 15rem ;
     
 }
+
+
+.steps-content {
+    margin-top: 16px;
+    border: 1px dashed #e9e9e9;
+    border-radius: 2px;
+    background-color: #fafafa;
+    // min-height: 200px;
+    text-align: center;
+    padding-top: 80px;
+  }
+  
+  .steps-action {
+    margin-top: 24px;
+  }
+  
+
+  .ant-form-item{
+    display: flex;
+
+    width: 60vw;
+
+    justify-content: space-between;
+
+    align-items: center;
+  }
+
+  .ant-form-item-label{
+    margin: 0 0.25rem ;
+
+    padding: 0.25rem;
+
+    
+
+    background: #Fff;
+  }
+
+  .ant-form{
+    margin: 0 5rem !important;
+
+    
+
+  }

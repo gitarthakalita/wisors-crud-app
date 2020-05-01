@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Button ,Layout, InputNumber ,Select, DatePicker } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-const { Header, Content, Footer } = Layout;
+// import { UserOutlined, LockOutlined } from '@ant-design/icons';
+// const { Header, Content, Footer } = Layout;
 const { Option } = Select;
 
 const layout = {
@@ -12,8 +12,8 @@ const layout = {
 const validateMessages = {
   required: '${label} is required!',
   types: {
-    email: '${label} is not validate email!',
-    number: '${label} is not a validate number!',
+    email: '${label} is not valid email!',
+    number: '${label} is not a valid number!',
   },
   number: {
     range: '${label} must be between ${min} and ${max}',

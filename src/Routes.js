@@ -13,6 +13,7 @@ import DeleteSuccess from './containers/delete/delete-success';
 import UpdateSuccess from './containers/update/update-success';
 import RetrieveFailed from './containers/retrieve/retrieve-failed';
 import UpdateForm from './containers/update/update-form';
+import RegisterNew from './containers/register-new/RegisterNew';
 
 export default function Routes() {
     return (
@@ -33,6 +34,9 @@ export default function Routes() {
 
             <Route  path='/delete'  component={Delete} />
             <Route  path='/delete-success'  component={DeleteSuccess} />
+
+
+            <Route  path='/register-new' component={RegisterNew} />
 
         </Switch>
     )
